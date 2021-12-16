@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Barbu</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Plateforme de jeux</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Jeux
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/games/barbu">Barbu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-1">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-6 offset-md-3">
+                <div class="card mb-3" id="user-card">
+                    <div class="card-body">
+                        <form method="POST" id="form">
+                            <div class="mb-3">
+
+                                <label for="username" class="form-label">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="username" minlength="2" maxlength="20"
+                                    placeholder="Saisir votre nom d'utilisateur" required>
+
+                            </div>
+                            <button class="btn btn-primary" id="start" type="submit">Créer un groupe</button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="card mb-3 " id="groupes-card">
+                    <div class="card-header">Groupes</div>
+                    <ul class="list-group list-group-flush" id="groupes-list"></ul>
+                </div>
+
+                <div class="mb-3 d-none" id="waiting-area">
+                    <div class="card mb-3">
+                        <div class="card-header">En attente d'autres joueurs</div>
+                        <div class="card-body mx-auto">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-body text-center">
+                            Partage ce lien pour inviter quelqu'un à jouer avec toi
+                            <span id="link-to-share"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center d-none mt-2" id="restart-area">
+            <input class="btn btn-primary" id="restart" type="button" value="Rejouer">
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 ">
+                <div class="card d-none" id="game-card">
+
+                    <div class="card-body ">
+
+
+                        <div id="board">
+                            <div class="d-flex flex-row justify-content-between" id="row-1-board">
+
+                                <div class="d-flex flex-column align-self-center">
+                                    <div class="p-2 " id="container-ouest">
+                                        <span id="playerOuest"></span>
+                                        <span id="choiceGamePlayerOuest"></span>
+                                        <span id="scorePlayerOuest"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="d-flex flex-column justify-content-center ">
+                                    <div class="p-2 " id="container-nord">
+                                        <span id="playerNord"></span>
+                                        <span id="choicePlayerGameNord"></span>
+                                        <span id="scorePlayerNord"></span>
+                                    </div>
+
+                                    <div class="p-2 " id="container-central">
+                                        <div class="row">
+
+                                            <div id="cardPlayedNord"></div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div id="container-central-central">
+                                                <div id="cardPlayedOuest"></div>
+                                                <div id="contract"></div>
+                                                <div id="cardPlayedEst"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div id="cardPlayedSud"></div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="d-flex flex-column align-self-center">
+                                    <div class="p-2" id="container-est">
+                                        <span id="playerEst"></span>
+                                        <span id="choicePlayerGameEst"></span>
+                                        <span id="scorePlayerEst"></span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="d-flex flex-row" id="row-2-board">
+
+                                <div class="p-2 " id="container-sud">
+                                    <div class="card-player-sud">
+                                        <div id="card0"></div>
+                                        <div id="card1"></div>
+                                        <div id="card2"></div>
+                                        <div id="card3"></div>
+                                        <div id="card4"></div>
+                                        <div id="card5"></div>
+                                        <div id="card6"></div>
+                                        <div id="card7"></div>
+                                        <div id="card8"></div>
+                                        <div id="card9"></div>
+                                        <div id="card10"></div>
+                                        <div id="card11"></div>
+                                        <div id="card12"></div>
+                                    </div>
+                                    <span id="playerSud"></span>
+                                    <span id="scorePlayerSud"></span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-toolbar mb-3 mt-2 collapse " id="buttonChoiceContract" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group mb-2 justify-content-between" role="group" aria-label="First group">
+                                <button type="button" id="barbu" class="btn btn-outline-info turn">
+                                    barbu
+                                </button>
+                                <button type="button" id="pasDePlis" class="btn btn-outline-info turn">
+                                    pas de plis
+                                </button>
+
+                            </div>
+                            <div class="btn-group mb-2 justify-content-between" role="group" aria-label="second group">
+                                <button type="button" id="pasDeDame" class="btn btn-outline-info turn">
+                                    pas de dame
+                                </button>
+                                <button type="button" id="pasDeCoeur" class="btn btn-outline-info turn">
+                                    pas de coeur
+                                </button>
+
+                            </div>
+                            <div class="btn-group mb-2 justify-content-between" role="group" aria-label="third group">
+                                <button type="button" id="salade" class="btn btn-outline-info turn">
+                                    salade
+                                </button>
+                                <button type="button" id="reussite" class="btn btn-outline-info turn">
+                                    réussite
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="chatMessageInputDiv">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" id="showContract" data-bs-toggle="collapse"
+                                        data-bs-target="#buttonChoiceContract" aria-expanded="false"
+                                        aria-controls="buttonChoiceContract" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Cliquer pour choisir votre contrat">
+                                        <i class="bi bi-files"></i>
+                                    </button>
+                                </span>
+
+                                <input class="form-control width100" id="messageText" placeholder="Enter Chat Message"
+                                    onkeyup="" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" id="sendMessage">
+                                        <i class="bi bi-send"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 ">
+            <div class="card d-none" id="chat-message">
+                <div class="card-body ">
+                    <div id="chatPanel">
+                        <ol id="messages" class="messages"></ol>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/src/player.js"></script>
+    <script src="/js/src/game.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

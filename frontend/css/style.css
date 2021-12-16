@@ -1,0 +1,186 @@
+#board {
+  background-color: #39913d;
+  height: 500px;
+}
+
+#row-1-board {
+  height: 75%;
+}
+
+#row-2-board {
+  height: 150px;
+}
+
+#container-nord,
+#container-sud {
+  height: 25%;
+}
+
+#container-central {
+  height: 50%;
+}
+/* .cardPLayer {
+} */
+
+#game-card .card-body,
+#chat-message .card-body {
+  padding: 0;
+}
+
+#chatPanel {
+  border: solid 1px gray;
+  background: rgb(95, 174, 175);
+  position: relative;
+}
+
+.chatMessageInputDiv {
+  bottom: 0px;
+  width: 100%;
+}
+
+.messages {
+  padding-left: 0;
+  overflow: hidden;
+  height: 250px;
+  margin-bottom: 40px;
+}
+
+.messages li {
+  list-style-type: none;
+  margin-bottom: 30px;
+  padding: 6px 6px 6px 6px;
+  display: block;
+}
+
+.otherMessage {
+  background: #ffcda3;
+  border: solid 1px gray;
+  margin: 0px 5px 5px 0px;
+  float: right;
+  padding: 0px 6px 0px 6px;
+  border-radius: 10px 10px 0 10px;
+}
+
+.myMessage {
+  background: #1bffbb;
+  border: solid 1px gray;
+  margin: 0px 5px 5px 5px;
+  float: left;
+  padding: 0px 6px 0px 6px;
+  border-radius: 10px 10px 10px 0;
+}
+
+.gameMessage {
+  background: #1babff;
+  border: solid 1px gray;
+  margin: 0px 5px 5px 5px;
+  float: left;
+  padding: 0px 6px 0px 6px;
+  border-radius: 10px 10px 10px 0;
+}
+
+/* #cell-2-3 {
+  vertical-align: middle;
+  writing-mode: sideways-rl;
+} */
+
+.btn-toolbar {
+  justify-content: space-evenly;
+}
+
+@media (max-width: 575.98px) {
+  #board {
+    height: 400px;
+  }
+
+  /* .card#game-card {
+    height: 90vh;
+  } */
+
+  #game-card .card-body,
+  #chat-message .card-body {
+    padding: 0;
+  }
+
+  #row-2-board {
+    height: auto;
+    justify-content: center;
+  }
+
+  #chat-message {
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #chatPanel {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #messages {
+    display: contents;
+  }
+
+  span#playerNord,
+  span#playerEst,
+  span#playerSud,
+  span#playerOuest,
+  span#scorePlayerSud {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  /*   #cell-2-1 {
+    writing-mode: vertical-lr;
+    vertical-align: baseline;
+  }
+
+  #cell-2-3 {
+    writing-mode: vertical-rl;
+    vertical-align: baseline;
+  } */
+
+  button {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 3px 15px;
+    color: black;
+    line-height: 25px;
+    background-color: #00bcd4;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+    transition: all 150ms ease-in;
+    outline: none;
+  }
+  button:hover {
+    background-color: #79d7e4;
+  }
+  button.turn {
+    color: rgb(255, 64, 129);
+    background-color: white;
+    box-shadow: none;
+  }
+  .btn-toolbar {
+    justify-content: center !important;
+  }
+
+  .card-player-sud,
+  .card-player-nord {
+    display: flex;
+  }
+  #cardPlayedNord,
+  #cardPlayedSud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #container-central-central {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
